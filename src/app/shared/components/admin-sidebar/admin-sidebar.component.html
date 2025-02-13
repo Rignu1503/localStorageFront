@@ -1,0 +1,8 @@
+<p-tree [value]="files" >
+  <ng-template let-node pTemplate="default" >
+
+    <a *ngIf="!node.children" [routerLink]="node.data">{{ node.label }}
+    </a>
+    <span *ngIf="node.children">{{ node.label }}</span>
+  </ng-template>
+</p-tree>

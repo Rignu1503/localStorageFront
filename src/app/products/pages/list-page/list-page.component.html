@@ -1,0 +1,34 @@
+
+<div *ngIf="searchValue; else listProduct">
+
+ <div class="flex justify-center items-center mt-4">
+  <p-button class="flex" label="Volver" (onClick)="reloadPage()"></p-button>
+</div>
+
+  <div class="flex flex-wrap gap-4 m-4 justify-center">
+
+    <div *ngFor="let searchProduct of products?.content"
+      class="card w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
+
+      <products-card [product]="searchProduct"></products-card>
+
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #listProduct>
+  <div class="flex flex-wrap gap-4 m-4 justify-center">
+
+    <div *ngFor="let product of products?.content"
+      class="card w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
+
+      <products-card [product]="product"></products-card>
+
+    </div>
+  </div>
+</ng-template>
+
+
+
