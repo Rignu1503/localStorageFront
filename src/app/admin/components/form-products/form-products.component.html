@@ -1,20 +1,45 @@
 <form [formGroup]="formProduct"  autocomplete="off" (ngSubmit)="onSave()">
 
-<div class="flex justify-between mb-6">
+  <div class="flex justify-between mb-6">
 
-  <div class="flex gap-3 ">
-    <img src="ico/store-Regular.png" alt="">
-     <div class="flex-auto">
-      <p class="text-3xl font-bold">Productos</p>
-      <p class="text-sm">Aqui puedes crear tus productos</p>
+    <div class="flex gap-3 ">
+      <img src="ico/store-Regular.png" alt="">
+      <div class="flex-auto">
+        <p class="text-3xl font-bold">Productos</p>
+        <p class="text-sm">Aqui puedes crear tus productos</p>
+      </div>
     </div>
-  </div>
 
-  <div class="flex items-center">
-    <p-button type="ngSubmit" label="Agregar" />
-  </div>
 
-</div>
+    <div class="flex items-center text-sm text-red-700 font-bold">
+      <span>Para editar debe recargar el formulario</span>
+    </div>
+
+    <div class="flex items-center gap-3">
+
+
+
+
+      <p-button
+      label="Editar"
+      [disabled]="!editproduct"
+      />
+
+
+
+      <p-button
+      type="ngSubmit"
+      label="Agregar"
+      [disabled]="editproduct"
+
+       />
+
+
+
+
+    </div>
+
+  </div>
 
   <div class="flex flex-row flex-wrap gap-4">
 

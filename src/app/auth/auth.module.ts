@@ -6,6 +6,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { PrimeNGModule } from '../prime-ng/prime-ng.module';
 import { AdminRoutingModule } from '../admin/admin-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AdminRoutingModule } from '../admin/admin-routing.module';
     CommonModule,
     AuthRoutingModule,
     PrimeNGModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    RouterModule
   ],
 })
 export class AuthModule { }

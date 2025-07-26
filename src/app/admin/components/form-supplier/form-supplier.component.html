@@ -1,0 +1,77 @@
+
+<form [formGroup]="formSupplier" autocomplete="off" (ngSubmit)="onSave()">
+
+  <div class="flex justify-between mb-6 gap-20">
+
+    <div class="flex gap-4 ">
+      <img src="ico/store-Regular.png" alt="">
+       <div class="flex-auto">
+        <p class="text-3xl font-bold">Proveedores</p>
+        <p class="text-sm">Aqui puedes añadir tus proveedores</p>
+      </div>
+
+    </div>
+
+    <div class="flex items-center">
+      <p-button type="ngSubmit" label="Agregar" />
+    </div>
+
+  </div>
+
+  <div class="flex flex-row flex-wrap gap-4">
+
+    <div class="flex-auto">
+      <label for="block" class="block mb-1 font-semibold"> Nombre</label>
+      <input
+        formControlName="name"
+        placeholder="Ingrese nombre del proveedor"
+        pInputText
+        class="w-full bg-gray-200 " />
+        <span *ngIf="isValidField('name')" class="text-xs text-red-700 pl-2">
+          {{ getFieldError('name') }}
+        </span>
+    </div>
+
+    <div class="flex-auto">
+      <label for="block" class="block mb-1 font-semibold">Telefono</label>
+      <input
+        type="number"
+        placeholder="Ingrese el numero de telefono"
+        pInputText
+        formControlName="phone"
+        class="w-full bg-gray-200" />
+        <span *ngIf="isValidField('phone')" class="text-xs text-red-700 pl-2">
+          {{ getFieldError('phone') }}
+      </span>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap gap-4">
+
+    <div class="flex-auto">
+      <label for="block" class="block mb-1 font-semibold">Correo electorico</label>
+      <input
+        formControlName="email"
+        placeholder="Ingrese el correo electorico"
+        pInputText
+        class="w-full bg-gray-200 " />
+        <span *ngIf="isValidField('email')" class="text-xs text-red-700 pl-2">
+          {{ getFieldError('email') }}
+      </span>
+    </div>
+
+    <div class="flex-auto">
+      <label for="block" class="block mb-1 font-semibold">Direccion</label>
+      <input
+        placeholder="Ingrese la Direccion"
+        pInputText
+        formControlName="address"
+        class="w-full bg-gray-200" />
+        <span *ngIf="isValidField('address')" class="text-xs text-red-700 pl-2">
+          {{ getFieldError('address') }}
+        </span>
+    </div>
+  </div>
+
+ </form>
+

@@ -1,5 +1,5 @@
 export interface Product{
-  content:          Content[];
+  content:          ContentProduct[];
   pageable:         Pageable;
   last:             boolean;
   totalPages:       number;
@@ -12,7 +12,7 @@ export interface Product{
   empty:            boolean;
 }
 
-export interface Content {
+export interface ContentProduct {
   id:           number;
   name:         string;
   urlImage:     string;

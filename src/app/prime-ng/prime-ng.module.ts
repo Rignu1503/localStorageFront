@@ -24,6 +24,9 @@ import { TagModule } from 'primeng/tag';
 import { TextareaModule } from 'primeng/textarea';
 import { ToastModule } from 'primeng/toast';
 import { TreeModule } from 'primeng/tree';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+
 
 @NgModule({
   declarations: [],
@@ -55,6 +58,8 @@ import { TreeModule } from 'primeng/tree';
     TableModule,
     ToastModule,
     SplitButtonModule,
+    InputGroupModule,
+    InputGroupAddonModule
 
 
 

@@ -1,0 +1,32 @@
+
+ <form action="" [formGroup]="formCategory" autocomplete="off" (ngSubmit)="onSave()">
+
+  <div class="flex justify-between mb-6 gap-20">
+
+    <div class="flex gap-4 ">
+      <img src="ico/store-Regular.png" alt="">
+       <div class="flex-auto">
+        <p class="text-3xl font-bold">Categorias</p>
+        <p class="text-sm">Aqui puedes crear tus Categorias</p>
+      </div>
+    </div>
+
+    <div class="flex items-center">
+      <p-button type="ngSubmit" label="Agregar" />
+    </div>
+
+  </div>
+
+  <div class="flex flex-row flex-wrap gap-4">
+    <div class="flex-auto">
+      <label for="block" class="block mb-1 font-semibold"> Nombre</label>
+      <input
+        formControlName="name"
+        placeholder="Ingrese nombre del producto"
+        pInputText
+        class="w-full bg-gray-200 " />
+    </div>
+  </div>
+
+ </form>
+

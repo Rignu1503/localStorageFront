@@ -1,0 +1,58 @@
+<div class="flex justify-between mb-6">
+  <div class="flex gap-3">
+    <img src="ico/store-Regular.png" alt="Store Icon" />
+    <div class="flex-auto">
+      <p class="text-3xl font-bold">Proveedores</p>
+      <p class="text-sm">Aquí puedes ver tus proveedores</p>
+    </div>
+  </div>
+
+  <div>
+    <p-button (click)="showDialog()" label="Agregar proveedor" />
+    <p-dialog  [modal]="true" [(visible)]="visible" >
+        <app-from-supplier [editSupplier]="editSupplier"></app-from-supplier>
+    </p-dialog>
+  </div>
+</div>
+
+<p-toast />
+
+<p-table [value]="suppliers" [tableStyle]="{ 'min-width': '60rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Correo electorico</th>
+      <th>Direccion</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-supplier>
+    <tr>
+      <td class="w-1/5">{{ supplier.name }}</td>
+      <td>{{ supplier.phone }}</td>
+      <td>{{ supplier.email }}</td>
+      <td>{{ supplier.address }}</td>
+
+     <td>
+      <p-button
+        class="px-2"
+        icon="pi pi-pencil"
+        [rounded]="true"
+        (click)="showDialog()"
+        (onClick)="getSupplierById( supplier.id )"
+
+         />
+
+      <p-button
+        icon="pi pi-trash"
+        [rounded]="true"
+        severity="danger"
+        (onClick)="onDelete( supplier.id )"/>
+
+    </td>
+
+
+
+    </tr>
+  </ng-template>
+</p-table>

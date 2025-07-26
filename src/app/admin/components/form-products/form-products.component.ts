@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Category, ContentCategory } from "../../interfaces/category.interface";
 import { adminService } from "../../services/admin.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Product, Content } from "../../interfaces/product.interface";
+import { Product, ContentProduct } from "../../interfaces/product.interface";
 import { MessageService } from "primeng/api";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -18,12 +19,14 @@ export class FormProductsComponent implements OnInit{
   public formProduct!: FormGroup;
   public addProduct!: Product;
 
-  @Input() editproduct: Content | null = null;
+  @Input() editproduct: ContentProduct | null = null;
+  
 
   constructor(
     private adminService: adminService,
     private messageService: MessageService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
 
   ){}
 
@@ -59,15 +62,56 @@ export class FormProductsComponent implements OnInit{
     }
   }
 
-  get currentProduct(): Content{
+  //Agregar elementos al formulario para editar
+  addFormProduct(): void{
+
+    this.formProduct.reset( this.editproduct );
+
+  }
+
+
+  //Obtener producto actual
+  get currentProduct(): ContentProduct {
 
     const product = this.formProduct.value;
 
     return product;
 
+  }
+
+  //Guardar producto
+  onSave(): void{
+
+    if(this.editproduct) this.formProduct.reset( this.editproduct );
+
+    if (this.formProduct.invalid) {
+
+      this.formProduct.markAllAsTouched();
+      return;
+    }
+
+    this.adminService.AddProduct( this.currentProduct )
+      .subscribe( product =>  {
+        this.messageService.add({ severity: 'success', summary: 'Creado', detail: 'Producto creado con exito' });
+      }
+    );
+    this.formProduct.reset();
+    this.reloadComponent();
 
   }
 
+  //Recargar componente
+  reloadComponent(): void {
+    const currentRoute = this.router.url;
+
+    setTimeout(() => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([currentRoute]);
+      });
+    }, 2000);
+  }
+
+  //Validaciones del formulario
   isValidField( field: string ): boolean | null{
 
     return this.formProduct.controls[field].errors
@@ -94,20 +138,5 @@ export class FormProductsComponent implements OnInit{
   }
 
 
-  onSave(): void{
-
-    if(this.editproduct) this.formProduct.reset( this.editproduct );
-
-
-    if (this.formProduct.invalid) return;
-
-    this.adminService.AddProduct( this.currentProduct )
-      .subscribe( product =>  {
-        this.messageService.add({ severity: 'success', summary: 'Creado', detail: 'Producto creado con exito' });
-      })
-
-    this.formProduct.reset();
-
-  }
 
 }

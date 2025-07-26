@@ -14,8 +14,14 @@ export class NodeService {
           {
             key: '0-0',
             label: 'Listado',
-            icon: 'pi pi-cloud-upload',
+            icon: 'pi pi-shopping-bag',
             data: '/admin/products', // Ruta para "Crear"
+          },
+          {
+            key: '0-1',
+            label: 'Categoria',
+            icon: 'pi pi-th-large',
+            data: '/admin/categories', // Ruta para "Crear"
           },
 
         ],
@@ -27,9 +33,9 @@ export class NodeService {
         children: [
           {
             key: '1-0',
-            label: 'Añadir proveedor',
+            label: 'Proveedores',
             icon: 'pi pi-fw pi-file',
-            data: '/admin/suppliers/add', // Ruta para "Añadir proveedor"
+            data: '/admin/suppliers', // Ruta para proveedores
           },
           {
             key: '1-1',
